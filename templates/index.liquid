@@ -1,0 +1,22 @@
+<main id="main-content">
+  {% for product in collections.frontpage.products %}
+  <article itemscope itemtype="http://schema.org/Product" class="product" data-product-id="{{ product.variants[0].id }}">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+    <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+    <link itemprop="availability" href="http://schema.org/InStock" />
+    <a class="plain" href="{{ product.url }}">
+      <h2 itemprop="name">{{ product.title }} &ndash; <span itemprop="price">{{ product.variants[0].price | money }}</span></h2>
+      <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
+    </a>
+    <form action="/cart/add" method="post" class="product-form" enctype="multipart/form-data">
+      <input type="hidden" name="id" value="{{ product.variants[0].id }}">
+      <p>
+        <input type="submit" name="action" value="Buy" class="btn buy-button"/>
+        &nbsp;
+        <input type="submit" name="action" value="Add to cart" class="btn add-button"/>
+      </p>
+    </form>
+  </article>
+  {% endfor %}
+</main>

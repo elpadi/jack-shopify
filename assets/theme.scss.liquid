@@ -1,0 +1,62 @@
+@import url({{ 'website.css' | asset_url }});
+
+.btn {
+  color:white;
+  background-color:black;
+  border-radius:5px;
+  padding:0.5em 1em;
+  text-decoration:none;
+  border-style:none;
+}
+
+.cart-button {
+  position:relative;
+}
+.cart-count {
+  position:absolute;
+  color:white;
+  top:22px;
+  left:30px;
+  line-height:1;
+}
+
+#logo .tagline {
+  font-size: 17px;
+  position: absolute;
+  left: 24px;
+  bottom: -6px;
+}
+#masthead > nav > .far-left a {
+  background-color:transparent !important;
+  color:black !important;
+}
+#masthead > nav > .far-left h1 + a {
+  height: 50px;
+  line-height: 104px;
+}
+
+#main-content {
+  max-width:748px;
+  margin:70px auto;
+}
+.template-product #main-content,
+.template-index #main-content {
+  max-width:480px;
+}
+#main-content p {
+  max-width:100%;
+  padding:0;
+  margin:1em auto !important;
+}
+.template-index #main-content article {
+  margin-bottom:50px;
+}
+
+#main-content th,
+#main-content td {
+  padding:1em;
+}
+
+.template-cart #main-content h3 {
+  font-size:1em;
+}

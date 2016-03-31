@@ -1,0 +1,2 @@
+{% capture file %}{{ name }}.svg{% endcapture %}
+<object class="svg-image svg--{{ name }} " type="image/svg+xml" data="{{ file | asset_url }}" crossorigin="anonymous">{{ text }}</object>

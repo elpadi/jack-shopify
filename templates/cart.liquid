@@ -1,0 +1,43 @@
+<main id="main-content">
+  <h1>Shopping Cart</h1>
+  <section id="cart">
+    {% if cart.item_count > 0 %}
+      <form action="/cart" method="post" name="cartform">
+      <!--START CART CONTENTS-->
+        <table class="tc" border="1">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart.items %}
+            <tr>
+              <td><img src="{{ item | img_url: 'compact' }}" alt="{{ item.title | escape }}" /><h3><a class="plain" href="{{ item.url | within: collections.all }}">{{ item.title }}</a></h3></td>
+              <td>{{ item.price | money }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.line_price | money }}</td>
+              <td><a class="sans btn" href="/cart/change?line={{ forloop.index }}&quantity=0" rel="{{ forloop.index }}">x</a>
+            </tr>
+            {% endfor %}
+            <tr>
+              <td colspan="3">&nbsp;</td>
+              <td>{{ cart.total_price | money }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <input type="submit" class="btn" id="update" name="update" value="Update" />
+          &nbsp;
+          <input type="submit" class="btn" id="checkout" name="checkout" value="Checkout" />
+        </p>
+      </form>
+    {% else %}
+      <p>Your shopping cart is empty.</p>
+    {% endif %}
+  </section>
+</main>
